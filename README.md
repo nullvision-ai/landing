@@ -27,8 +27,6 @@ anexam a origem à mensagem do WhatsApp.
 | `index.html` | a página inteira (HTML, CSS e JS, sem build) |
 | `assets/v/` | trechos curtos do portfólio, sem áudio, ~5 MB no total, com um `.jpg` de capa cada |
 | `og-image.png` | imagem de prévia (1200×630) ao compartilhar o link |
-| `nullvision_brand_identity_v2.html` | referência de identidade visual |
-| `nullvision_graphic_elements.html` | elementos gráficos da marca |
 
 Os vídeos só carregam quando aparecem na tela. Para trocar um trecho, gere um MP4 novo com o mesmo
 nome (topo: 432×768; cards: 480×600; H.264, CRF 30, sem áudio, `+faststart`) e a capa `.jpg`.
