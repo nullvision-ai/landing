@@ -4,7 +4,7 @@ Página única (`index.html`) de apresentação e contato da nullvision: "o que 
 Sem formulário: todo contato vai para o WhatsApp, com uma mensagem pronta que diz de qual parte da
 página a pessoa veio (cada card de serviço tem a sua). Há também um link de e-mail no fecho.
 
-**No ar em:** https://nullvision-ai.github.io/projectbriefing/ — é esse o link da bio do Instagram.
+**No ar em:** https://nullvision-ai.github.io/landing/ — é esse o link da bio do Instagram. Até 29/10/2026 o repositório se chamava `projectbriefing` (o endereço antigo deixou de funcionar).
 Domínio próprio previsto: `nullvisionai.com` (a registrar).
 
 ## Medição
