@@ -231,6 +231,22 @@
   }
   .need-link span { color: var(--signal); transition: transform .15s ease; }
   .need-link:hover span { transform: translateX(3px); }
+  /* edição: o mesmo take, bruto e editado, com um controle de arrastar */
+  .edicao { display: grid; grid-template-columns: minmax(0, 380px) 1fr; gap: 56px; align-items: center; }
+  .ba { position: relative; aspect-ratio: 9 / 16; border-radius: 14px; overflow: hidden; background: #0d0d0d; border: 1px solid var(--line); touch-action: pan-y; cursor: ew-resize; user-select: none; }
+  .ba video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ba .ba-edit { clip-path: inset(0 0 0 var(--cut, 50%)); }
+  .ba .ba-line { position: absolute; top: 0; bottom: 0; left: var(--cut, 50%); width: 2px; background: var(--ink); transform: translateX(-1px); pointer-events: none; }
+  .ba .ba-knob { position: absolute; top: 50%; left: var(--cut, 50%); width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: var(--bg); transform: translate(-50%, -50%); display: grid; place-items: center; font-family: var(--mono); font-size: 14px; font-weight: 700; pointer-events: none; }
+  .ba .ba-tag { position: absolute; top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 6px 10px; background: rgba(10,10,10,.75); border: 1px solid var(--line); border-radius: 4px; }
+  .ba .ba-tag.l { left: 14px; color: var(--muted); }
+  .ba .ba-tag.r { right: 14px; color: var(--ink); }
+  .ba .ba-tag.r .dot { color: var(--signal); }
+  .edicao-lista { list-style: none; padding: 0; margin: 28px 0 32px; font-family: var(--mono); font-size: 14px; color: #bbb; }
+  .edicao-lista li { padding: 10px 0; border-top: 1px solid var(--line); }
+  .edicao-lista li::before { content: '> '; color: var(--signal); }
+  .edicao-acoes { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  @media (max-width: 860px) { .edicao { grid-template-columns: 1fr; gap: 32px; } .ba { max-width: 340px; margin: 0 auto; width: 100%; } }
   @media (max-width: 960px) { .needs { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) {
     .needs {
@@ -842,6 +858,36 @@
     </div>
   </section>
 
+  <section id="edicao">
+    <div class="wrap">
+      <div class="edicao">
+        <div class="ba" id="ba" role="slider" aria-label="Arraste para comparar o vídeo bruto com o vídeo editado" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+          <video data-src="assets/v/edicao-bruto.mp4" poster="assets/v/edicao-bruto.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <video class="ba-edit" data-src="assets/v/edicao-editado.mp4" poster="assets/v/edicao-editado.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="ba-tag l">bruto</span><span class="ba-tag r"><span class="dot">◉</span> editado</span>
+          <span class="ba-line"></span><span class="ba-knob">‹›</span>
+        </div>
+        <div>
+          <div class="sec-head" style="margin-bottom:0">
+          <p class="label"><span class="dot">//</span> edição</p>
+          <h2 data-scramble>o mesmo take. outro vídeo.</h2>
+          <p>arraste e compare. você manda o que gravou, ou a gente gera a cena, e devolve um vídeo feito pra segurar quem assiste até o último segundo.</p>
+          </div>
+          <ul class="edicao-lista">
+            <li>corte no ritmo, sem pausa morta</li>
+            <li>legenda e grafismo no tempo da fala</li>
+            <li>trilha, efeitos e som tratados</li>
+            <li>entrega rápida</li>
+          </ul>
+          <div class="edicao-acoes">
+            <a class="btn btn-primary" data-wa="edicao" href="#">quero editar meu vídeo <span>→</span></a>
+            <a class="btn btn-ghost" href="assets/v/edicao-completo.mp4" target="_blank" rel="noopener" data-ver="edicao">ver o vídeo inteiro, com som</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="por-que">
     <div class="wrap">
       <div class="sec-head">
@@ -976,6 +1022,10 @@
           <p>todo projeto tem duas rodadas de revisão incluídas. a proposta também é aprovada antes, então a surpresa fica pequena.</p>
         </details>
         <details>
+          <summary>vocês editam vídeo que eu já gravei?</summary>
+          <p>editamos. você manda o material bruto e recebe o vídeo com corte, legenda, grafismo, cor e som. a edição essencial fica pronta em até 48 horas; com motion graphics, em até 3 dias úteis.</p>
+        </details>
+        <details>
           <summary>posso usar em anúncio pago?</summary>
           <p>pode. onde o vídeo vai rodar (redes, site, mídia paga, TV) é combinado no orçamento.</p>
         </details>
@@ -1038,7 +1088,8 @@
     motion:     'Oi! Vi o site e quero um motion para a minha marca.',
     app:        'Oi! Vi o site e quero um vídeo das telas do meu app.',
     logo:       'Oi! Vi o site e quero um logo animado ou uma vinheta.',
-    impossivel: 'Oi! Vi o site e tenho uma cena que não dá pra filmar.'
+    impossivel: 'Oi! Vi o site e tenho uma cena que não dá pra filmar.',
+    edicao:     'Oi! Vi o site e quero editar um vídeo.'
   };
 
   // origem da visita (?utm_source=...), anexada à mensagem para sabermos de onde veio
@@ -1062,6 +1113,19 @@
   document.querySelectorAll('[data-contact="email"]').forEach(a => {
     a.addEventListener('click', () => track('Contact', { content_name: 'email', method: 'email' }));
   });
+
+  // antes/depois da edição: arrastar move o corte; parado, ele vai e volta sozinho
+  (function () {
+    const ba = document.getElementById('ba'); if (!ba) return;
+    let mexeu = false, ini = performance.now();
+    const pos = p => { const v = Math.max(0, Math.min(100, p)); ba.style.setProperty('--cut', v + '%'); ba.setAttribute('aria-valuenow', Math.round(v)); };
+    const doEvento = e => { const r = ba.getBoundingClientRect(); pos((e.clientX - r.left) / r.width * 100); };
+    ba.addEventListener('pointerdown', e => { mexeu = true; ba.setPointerCapture(e.pointerId); doEvento(e); track('ViewContent', { content_name: 'edicao_antes_depois' }); });
+    ba.addEventListener('pointermove', e => { if (ba.hasPointerCapture && ba.hasPointerCapture(e.pointerId)) doEvento(e); });
+    ba.addEventListener('keydown', e => { const v = parseFloat(getComputedStyle(ba).getPropertyValue('--cut')) || 50; if (e.key === 'ArrowLeft') { mexeu = true; pos(v - 5); } if (e.key === 'ArrowRight') { mexeu = true; pos(v + 5); } });
+    if (!reduzir) (function vai(t) { if (!mexeu) { pos(50 + 32 * Math.sin((t - ini) / 1400)); requestAnimationFrame(vai); } })(ini);
+    document.querySelectorAll('[data-ver="edicao"]').forEach(a => a.addEventListener('click', () => track('ViewContent', { content_name: 'edicao_video_completo' })));
+  })();
 
   // quem chega até os trabalhos conta como "viu o conteúdo"
   const trabalhos = document.getElementById('trabalhos');
@@ -1136,11 +1200,12 @@
   // Barra de terminal no topo de cada seção.
   const BARRAS = {
     'trabalhos':     ['0x01', '/trabalhos', '9 renders'],
-    'por-que':       ['0x02', '/por-que', 'comparando'],
-    'como-funciona': ['0x03', '/processo', '3 etapas'],
-    'identidade':    ['0x04', '/identidade', 'compilando'],
-    'perguntas':     ['0x05', '/perguntas', '5 entradas'],
-    'contato':       ['0x06', '/contato', 'aguardando você']
+    'edicao':        ['0x02', '/edição', 'bruto → editado'],
+    'por-que':       ['0x03', '/por-que', 'comparando'],
+    'como-funciona': ['0x04', '/processo', '3 etapas'],
+    'identidade':    ['0x05', '/identidade', 'compilando'],
+    'perguntas':     ['0x06', '/perguntas', '6 entradas'],
+    'contato':       ['0x07', '/contato', 'aguardando você']
   };
   Object.entries(BARRAS).forEach(([id, [addr, rota, estado]]) => {
     const wrap = document.querySelector('#' + id + ' > .wrap');
