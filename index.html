@@ -1124,6 +1124,14 @@
     ba.addEventListener('pointermove', e => { if (ba.hasPointerCapture && ba.hasPointerCapture(e.pointerId)) doEvento(e); });
     ba.addEventListener('keydown', e => { const v = parseFloat(getComputedStyle(ba).getPropertyValue('--cut')) || 50; if (e.key === 'ArrowLeft') { mexeu = true; pos(v - 5); } if (e.key === 'ArrowRight') { mexeu = true; pos(v + 5); } });
     if (!reduzir) (function vai(t) { if (!mexeu) { pos(50 + 32 * Math.sin((t - ini) / 1400)); requestAnimationFrame(vai); } })(ini);
+    // os dois vídeos (bruto e editado) têm 39 s e precisam andar juntos: o bruto segue o relógio do editado
+    const vb = ba.querySelector('video:not(.ba-edit)'), ve = ba.querySelector('video.ba-edit');
+    if (vb && ve) {
+      const junta = () => { if (vb.readyState > 1 && ve.readyState > 1 && Math.abs(vb.currentTime - ve.currentTime) > 0.08) vb.currentTime = ve.currentTime; };
+      ve.addEventListener('timeupdate', junta); ve.addEventListener('seeked', junta);
+      ve.addEventListener('play', () => { if (vb.paused) vb.play().catch(() => {}); junta(); });
+      ve.addEventListener('pause', () => vb.pause());
+    }
     document.querySelectorAll('[data-ver="edicao"]').forEach(a => a.addEventListener('click', () => track('ViewContent', { content_name: 'edicao_video_completo' })));
   })();
 
