@@ -283,6 +283,13 @@
   .step p { color: var(--muted); font-size: 14.5px; }
   @media (max-width: 760px) { .steps { grid-template-columns: 1fr; gap: 32px; } }
 
+  /* PROVA SOCIAL */
+  .provas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .prova { margin: 0; min-width: 0; border: 1px solid var(--line); background: #0d0d0d; padding: 14px; }
+  .prova img { display: block; width: 100%; height: 230px; object-fit: contain; background: #0b141a; border-radius: 6px; }
+  .prova figcaption { margin-top: 12px; }
+  @media (max-width: 760px) { .provas { grid-template-columns: minmax(0, 1fr); gap: 14px; } .prova img { height: auto; max-height: 260px; } }
+
   /* IDENTIDADE: as mesmas peças trocam de marca, como se o código recompilasse */
   .ident { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: start; }
   .ident-list { list-style: none; margin-top: 8px; }
@@ -998,6 +1005,30 @@
           </div>
           <p class="ident-note">// exemplos ilustrativos. no seu projeto, entram as suas cores, fontes e logo.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quem-recebeu">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label"><span class="dot">//</span> quem já recebeu</p>
+        <h2 data-scramble>o que disseram.</h2>
+        <p>mensagens reais de quem recebeu o trabalho, do jeito que chegaram.</p>
+      </div>
+      <div class="provas">
+        <figure class="prova">
+          <img src="assets/prova/essence.jpg" alt="Mensagem da cliente: Ficou ótimo o vídeo! Entrega rápida! Obrigada" loading="lazy" width="540" height="420">
+          <figcaption class="label">clínica · vídeo de divulgação</figcaption>
+        </figure>
+        <figure class="prova">
+          <img src="assets/prova/dashboard.jpg" alt="Cliente responde Show com aplausos ao receber o documento" loading="lazy" width="740" height="400">
+          <figcaption class="label">documento com a identidade do cliente</figcaption>
+        </figure>
+        <figure class="prova">
+          <img src="assets/prova/granja.jpg" alt="Cliente responde Top e Amei esses 3 sobre as versões do logo" loading="lazy" width="786" height="615">
+          <figcaption class="label">granja · identidade visual</figcaption>
+        </figure>
       </div>
     </div>
   </section>
