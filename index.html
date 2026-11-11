@@ -283,6 +283,20 @@
   .step p { color: var(--muted); font-size: 14.5px; }
   @media (max-width: 760px) { .steps { grid-template-columns: 1fr; gap: 32px; } }
 
+  /* PRODUTO EM CENA */
+  .vitrine { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .vit { border: 1px solid var(--line); background: #0d0d0d; display: flex; flex-direction: column; min-width: 0; }
+  .vit .media { aspect-ratio: 9 / 16; background: #0d0d0d; }
+  .vit video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .vit-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .vit h3 { font-size: 20px; font-weight: 600; line-height: 1.25; }
+  .vit-body > p { color: var(--muted); font-size: 14px; flex: 1; }
+  @media (max-width: 640px) {
+    .vitrine { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 0 -16px; padding: 0 16px 6px; scrollbar-width: none; }
+    .vitrine::-webkit-scrollbar { display: none; }
+    .vit { flex: 0 0 78%; scroll-snap-align: start; }
+  }
+
   /* PROVA SOCIAL */
   .provas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
   .prova { margin: 0; min-width: 0; border: 1px solid var(--line); background: #0d0d0d; padding: 14px; }
@@ -858,6 +872,43 @@
             <h3>troca de personagem</h3>
             <p>a cena da trend com qualquer personagem no lugar. o mesmo movimento, outra cara.</p>
             <a class="need-link" data-wa="troca" href="#">quero algo assim <span>→</span></a>
+          </div>
+        </article>
+      </div>
+      <p class="label swipe-hint">arraste para o lado →</p>
+    </div>
+  </section>
+
+  <section id="produto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label"><span class="dot">//</span> produto em cena</p>
+        <h2 data-scramble>o produto contando a própria história.</h2>
+        <p>textura, detalhe e acabamento em primeiro plano. sem estúdio, sem fotógrafo e sem esperar a peça ficar pronta.</p>
+      </div>
+      <div class="vitrine">
+        <article class="vit">
+          <div class="media"><span class="tag"><span class="dot">◉</span> render · moda</span><video data-src="assets/v/produto-polo.mp4" poster="assets/v/produto-polo.jpg" muted loop playsinline preload="none" aria-label="Uma camisa polo se construindo fio a fio numa quadra de saibro"></video></div>
+          <div class="vit-body">
+            <h3>do fio ao ícone</h3>
+            <p>a peça se constrói diante da câmera: tecido, gola e bordado em evidência.</p>
+            <a class="need-link" data-wa="produto" href="#">quero algo assim <span>→</span></a>
+          </div>
+        </article>
+        <article class="vit">
+          <div class="media"><span class="tag"><span class="dot">◉</span> render · bebida</span><video data-src="assets/v/produto-lata.mp4" poster="assets/v/produto-lata.jpg" muted loop playsinline preload="none" aria-label="Lata de bebida no gelo com fruta e condensação"></video></div>
+          <div class="vit-body">
+            <h3>o sabor em cena</h3>
+            <p>gelo, condensação e fruta. a embalagem como protagonista de comercial.</p>
+            <a class="need-link" data-wa="produto" href="#">quero algo assim <span>→</span></a>
+          </div>
+        </article>
+        <article class="vit">
+          <div class="media"><span class="tag"><span class="dot">◉</span> render · calçado</span><video data-src="assets/v/produto-tenis.mp4" poster="assets/v/produto-tenis.jpg" muted loop playsinline preload="none" aria-label="Tênis rosa em macro, com costura e logo em detalhe"></video></div>
+          <div class="vit-body">
+            <h3>o detalhe que vende</h3>
+            <p>material, costura e logo em macro, num universo com a cara da marca.</p>
+            <a class="need-link" data-wa="produto" href="#">quero algo assim <span>→</span></a>
           </div>
         </article>
       </div>
